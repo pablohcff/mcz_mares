@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>MCZ Marés</title>
+    </head>
+    <body>
+        <h1>MCZ Marés</h1>
+        <p>Acompanhe diariamente as marés do porto de Maceió!</p>
+
+        {% if mais_recente %}
+        <div style="border:2px solid #007bff; padding:16px; margin:16px 0; border-radius:8px;">
+            <h2>Próxima maré — {{ mais_recente.tide_type }}</h2>
+            <p><strong>{{ mais_recente.hour }}</strong> — {{ mais_recente.level }}m</p>
+        </div>
+        {% endif %}
+
+        {% if seguinte %}
+        <h3>Seguintes</h3>
+        <ul>
+            {% for t in seguinte %}
+            <li>{{ t.hour }} — {{ t.level }}m ({{ t.tide_type }})</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <hr>
+    </body>
+</html>
